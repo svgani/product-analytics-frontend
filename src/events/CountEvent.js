@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import axios from 'axios';
 
 const USER_COUNT_BASE_URL = "http://54.73.251.129:8090";
+// const USER_COUNT_BASE_URL = "http://localhost:8090";
 var search = ""
 
 
@@ -17,7 +18,7 @@ function test() {
     return new Promise(function (resolve, reject) {
         getUserCount().then((res) => {
             // console.log(res)
-            console.log(res.data)
+            // console.log(res.data)
             resolve(res.data);
         },
         (error) => {
@@ -33,13 +34,13 @@ export default function GetCount() {
 
     async function counter() {
         await test().then(function(value) {
-            console.log("Promise: "+value)
+            // console.log("Promise: "+value)
             setCount(value)
         });
     };
 
     if (search.search("IdentifyEvents")>0) {
-        console.log("ID Events")
+        // console.log("ID Events")
         search = "/getUsersCount" + search
         counter()
         return(
@@ -71,7 +72,7 @@ export default function GetCount() {
         )
     }
     if (search.search("TrackEvents")>0) {
-        console.log("Track Events")
+        // console.log("Track Events")
         search = "/getEventsCount" + search
         counter();
         return(
