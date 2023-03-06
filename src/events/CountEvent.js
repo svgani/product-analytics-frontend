@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from 'axios';
 
-const USER_COUNT_BASE_URL = "http://localhost:8090";
+const USER_COUNT_BASE_URL = "http://54.73.251.129:8090";
 var search = ""
 
 
