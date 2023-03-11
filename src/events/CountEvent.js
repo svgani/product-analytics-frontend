@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from 'axios';
 
@@ -28,12 +28,16 @@ export default function GetCount() {
     async function counter() {
         await test().then(function(value) {
             setCount(value)
+            console.log(value);
         });
     };
 
+    useEffect(() => {
+        counter();
+    }, []);
+
     if (search.search("IdentifyEvents")>0) {
         search = "/getUsersCount" + search
-        counter()
         return(
             <div className="broad visual">
                 <h2>Identify Events: {count.length}</h2>
@@ -60,7 +64,6 @@ export default function GetCount() {
     }
     if (search.search("TrackEvents")>0) {
         search = "/getEventsCount" + search
-        counter();
         return(
             <div className="broad visual">
                 <h2>Track Events: {count.length}</h2>
